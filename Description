@@ -1,1 +1,47 @@
 this is explaination page.
+
+How do neural networks learn complex patterns? Spiral Data
+
+Basic Structure — Neurons and Layers
+
+Biological Neuron → Artificial Neuron Analogy
+Weights, Bias, Input/Output
+Role of Hidden Layer — Expressiveness
+Explanation of Non-linearity
+ReLU / Sigmoid / Tanh / Leaky ReLU
+Visualization Link: Show the Activation Graph panel and explain the shape of each function
+
+Forward Propagation
+The process of data passing through layers
+Represented by matrix operations (about one line of formula)
+Visualization Link: Explain the flow in the Network Structure panel
+
+Loss Function
+Measuring how wrong the prediction is
+Explanation of Cross-entropy loss
+Visualization Link: Loss Curve panel — Show the loss value before training
+
+Backpropagation / Gradient Descent
+How weights are updated to reduce loss
+Intuitive explanation of the Chain rule (minimizing formulas)
+Role of Learning Rate
+Visualization Link: Manipulating the lr slider — Too large causes divergence, too small causes slowness
+
+//////////////////////////////////////////////////
+1 Hidden Layer → Training → Checking Results
+Hidden layer 4 → Training → Check Results
+Visualization Link: Comparing how complex the Decision Boundary becomes
+
+Training with the same structure but different activations
+Difference in convergence speed / final accuracy
+Visualization Link: Comparing Loss Curve panels
+/////////////////////////////////////////////////////
+in code? 보여주기/어떻게?
+
+The process of the spiral gradually taking shape as the Decision Boundary is trained
+
+Real-time graph showing the Loss Curve descending
+
+Comparison of expressiveness differences by switching the number of layers from 1 to 4
+
+Comparison of convergence speed differences between ReLU, Sigmoid, and Tanh on the same screen
