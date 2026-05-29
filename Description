@@ -1,47 +1,103 @@
-Project youtube link_
+1. What are Neural Networks & the Problem of Learning Non-Linearity//
+One of the greatest challenges in deep learning education is understanding the process through which neural networks are able to learn non-linear patterns.
+There are many theoretical explanations of this process; however, the specific mechanisms behind how a neural network updates its weights,
+the choice and use of activation functions and the decision boundaries of neural networks are largely viewed as abstract processes for many learners.
+Using 2D spiral data (i.e., a standard example of non-linearly separable data) as our visual representation of key concepts,
+this project will provide a means for visually exploring five concepts related to neural network design and training, including neuron design,
+forward propagation, loss function, back propagation, and the choice of depth and activation function.
+By observing the evolution of the decision boundary during training,
+we will gain a better understanding of the effect that architectural decisions have on the resultant decision boundary.
 
-How do neural networks learn complex patterns? Spiral Data
 
-Basic Structure — Neurons and Layers
+2. Assignments and Procedures//
+Organize three interwoven coils of information in two-dimensional space (x,y)
+—> a linear classifier cannot classify these data; therefore, the hidden layers of the network will teach it about non-linear borders.
 
-Biological Neuron → Artificial Neuron Analogy
-Weights, Bias, Input/Output
-Role of Hidden Layer — Expressiveness
-Explanation of Non-linearity
-ReLU / Sigmoid / Tanh / Leaky ReLU
-Visualization Link: Show the Activation Graph panel and explain the shape of each function
+Model Design
+Input: Two-dimensional coordinates (x,y)
+Two or four hidden layers with 100 units each
+Output: Three classes of softmax
+Loss: Cross-entropy
+Conceptual Basis
+Neuron Model
+Each artificial neuron computes a weighted total of inputs and adds a bias value,
+followed by the application of a non-linear activation.
+This closely resembles the biological neurons in which the dendrite,
+soma and axon represent the pathways of information transmission through the neuron.
 
+Hidden Layer Function
+The hidden layer reconfigures the input space stepwise to adapt the data to correspond to linear separability.
+A higher number of hidden layers provides opportunities for the network to create higher-order features from the input data.
+
+_Activation Functions_
+Function / Range / Key Property / Limitation 
+ReLU[0, ∞) / Fast convergence, sparse / Dying ReLU
+Sigmoid(0, 1) / Probabilistic output / Vanishing gradients
+Tanh(−1, 1) / Zero-centered / Saturates at extremes
+Leaky ReLU(−∞, ∞) / Fixes dying ReLU / α is a hyperparameter
+----------------------------------------------------------------------------------------
 Forward Propagation
-The process of data passing through layers
-Represented by matrix operations (about one line of formula)
-Visualization Link: Explain the flow in the Network Structure panel
+Data flows layer by layer: h⁽ˡ⁾ = σ( W⁽ˡ⁾ · h⁽ˡ⁻¹⁾ + b⁽ˡ⁾ )
 
 Loss Function
-Measuring how wrong the prediction is
-Explanation of Cross-entropy loss
-Visualization Link: Loss Curve panel — Show the loss value before training
+Cross-Entropy loss measures prediction error: L = −Σ yᵢ · log(ŷᵢ)
 
-Backpropagation / Gradient Descent
-How weights are updated to reduce loss
-Intuitive explanation of the Chain rule (minimizing formulas)
-Role of Learning Rate
-Visualization Link: Manipulating the lr slider — Too large causes divergence, too small causes slowness
+Backpropagation & Gradient Descent
+Weights are updated via chain rule gradients: W ← W − η · ∂L/∂W.
+Learning rate η controls step size — too large causes divergence, too small causes slow convergence.
 
-//////////////////////////////////////////////////
-1 Hidden Layer → Training → Checking Results
-Hidden layer 4 → Training → Check Results
-Visualization Link: Comparing how complex the Decision Boundary becomes
 
-Training with the same structure but different activations
-Difference in convergence speed / final accuracy
-Visualization Link: Comparing Loss Curve panels
-/////////////////////////////////////////////////////
-in code? 보여주기/어떻게?
+3. Experimental Studies//
+The aim of this study was to investigate the relationship between the number of hidden layers in a network
+and the ability of the network to learn the specified classification task.
 
-The process of the spiral gradually taking shape as the Decision Boundary is trained
+-The first experiment studies a single hidden layer (one layer deep) against
+four hidden layers (four layers deep) to observe how the expressiveness of the newly learned decision boundary increases with increased depth in the model.
 
-Real-time graph showing the Loss Curve descending
+-The second experiment takes the four-layer deep network that was previously created and compares different types of activation functions
+to measure how quickly each converges to the desired solution and to determine which will result in the best overall classification accuracy when using identical training data.
 
-Comparison of expressiveness differences by switching the number of layers from 1 to 4
 
-Comparison of convergence speed differences between ReLU, Sigmoid, and Tanh on the same screen
+4. Result Analysis//
+Depth & Expressiveness
+The 1-layer network forms a coarse boundary, failing to resolve tightly wound spiral arms (~72% accuracy).
+The 4-layer network wraps the boundary precisely around each arm (~98% accuracy), demonstrating how depth enables composition of complex representations.
+
+Activation Function Impact
+ReLU converges fastest (~200 epochs) due to strong, non-saturating gradients.
+Tanh converges moderately (~400 epochs) with stable behavior from zero-centered outputs.
+Sigmoid is slowest (~700+ epochs) due to vanishing gradients across layers, reaching only ~89% accuracy.
+
+Learning Rate Sensitivity
+η = 1.0 caused divergence; η = 0.001 was too slow. Optimal performance was achieved at η = 0.01 across all activation variants.
+
+
+5. Conclusion//
+The results from this research show that depth is the major influence on representation ability when solving non-linear problems.
+On data that has a spiral classification, for example, the four-layered network has provided results of over a 26-point difference
+in accuracy than that given by the one-layered network. Additionally, choice of activation function has a significant effect
+upon the time to convergence; specifically, the ReLU function had less time to converge than the sigmoid function, which showed
+vanishing gradients and greater time to converge due to the increased depth of the architecture.
+
+Through visualisation of the decision boundary, as well as of the loss versus epoch graph,
+the previously discussed abstract reasons for how the three items of non-linearity, depth and original gradient-based
+optimisation allow for the neural network to learn to represent very complex data sets in a manner that affords flexibility for new data sets of similar type/size.
+
+Future research may be undertaken to consider regularisation methods that could impact both the smoothness of the decision boundary, as well as generalisation ability.
+
+
+
+References
+
+1. Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press. https://www.deeplearningbook.org
+
+2. Karpathy, A. (2016). CS231n: Convolutional Neural Networks for Visual Recognition. Stanford University. https://cs231n.stanford.edu
+
+3. TensorFlow Playground. https://playground.tensorflow.org
+
+4. Nair, V., & Hinton, G. E. (2010). Rectified Linear Units Improve Restricted Boltzmann Machines. *ICML*. https://www.cs.toronto.edu/~fritz/absps/reluICML.pdf
+
+
+
+
+
