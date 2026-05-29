@@ -1,8 +1,11 @@
+Youtube link_https://youtu.be/cAGLI7qIf10
+
 1. What are Neural Networks & the Problem of Learning Non-Linearity//
 One of the greatest challenges in deep learning education is understanding the process through which neural networks are able to learn non-linear patterns.
-There are many theoretical explanations of this process; however, the specific mechanisms behind how a neural network updates its weights,
+There are many theoretical explanations of this process
+however, the specific mechanisms behind how a neural network updates its weights,
 the choice and use of activation functions and the decision boundaries of neural networks are largely viewed as abstract processes for many learners.
-Using 2D spiral data (i.e., a standard example of non-linearly separable data) as our visual representation of key concepts,
+Using 2D spiral data as our visual representation of key concepts,
 this project will provide a means for visually exploring five concepts related to neural network design and training, including neuron design,
 forward propagation, loss function, back propagation, and the choice of depth and activation function.
 By observing the evolution of the decision boundary during training,
@@ -84,6 +87,9 @@ the previously discussed abstract reasons for how the three items of non-lineari
 optimisation allow for the neural network to learn to represent very complex data sets in a manner that affords flexibility for new data sets of similar type/size.
 
 Future research may be undertaken to consider regularisation methods that could impact both the smoothness of the decision boundary, as well as generalisation ability.
+
+
+
 
 
 
